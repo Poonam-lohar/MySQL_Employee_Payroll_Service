@@ -92,3 +92,49 @@ mysql> select start_date from employee_payroll where start_date between cast('20
 3 rows in set (0.01 sec)
 
 ***************************************************************************
+
+UC6:  Ability to add Gender to Employee Payroll Table and Update the Rows to reflect the correct Employee Gender
+
+mysql> update employee_payroll set gender = 'M' where name = 'Charlie';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+--------+---------+------------+
+| id | name    | gender | salary  | start_date |
++----+---------+--------+---------+------------+
+|  1 | Bill    | M      | 1000000 | 2018-01-03 |
+|  2 | Mark    | NULL   | 2000000 | 2019-11-13 |
+|  3 | Clarlie | NULL   | 3000000 | 2020-05-21 |
++----+---------+--------+---------+------------+
+3 rows in set (0.00 sec)
+
+mysql> update employee_payroll set gender = 'M' where name = 'Clarlie';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+--------+---------+------------+
+| id | name    | gender | salary  | start_date |
++----+---------+--------+---------+------------+
+|  1 | Bill    | M      | 1000000 | 2018-01-03 |
+|  2 | Mark    | NULL   | 2000000 | 2019-11-13 |
+|  3 | Clarlie | M      | 3000000 | 2020-05-21 |
++----+---------+--------+---------+------------+
+3 rows in set (0.00 sec)
+
+mysql> update employee_payroll set gender = 'F' where name = 'Mark';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+--------+---------+------------+
+| id | name    | gender | salary  | start_date |
++----+---------+--------+---------+------------+
+|  1 | Bill    | M      | 1000000 | 2018-01-03 |
+|  2 | Mark    | F      | 2000000 | 2019-11-13 |
+|  3 | Clarlie | M      | 3000000 | 2020-05-21 |
++----+---------+--------+---------+------------+
+3 rows in set (0.00 sec)
+
+*************************************************************************************
