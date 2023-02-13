@@ -36,3 +36,13 @@ mysql> use employee_payroll_service;
 Database changed
 
 ********************************************************************
+
+//UC2: Ability to create a employee payroll table
+in the payroll service database to
+manage employee payrolls
+
+
+mysql> use employee_payroll_service;
+Database changed
+mysql> create table employee_payroll(id int auto_increment,name varchar(30),salary double,start_date date,primary key(id));
+Query OK, 0 rows affected (0.19 sec)
