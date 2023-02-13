@@ -46,3 +46,13 @@ mysql> use employee_payroll_service;
 Database changed
 mysql> create table employee_payroll(id int auto_increment,name varchar(30),salary double,start_date date,primary key(id));
 Query OK, 0 rows affected (0.19 sec)
+***********************************************************************
+
+//UC3: Ability to create employee payroll data in the payroll service database as part of CURD Operation
+
+
+mysql> insert into employee_payroll(name,salary,start_date)values('Bill',1000000.0,'2018-01-03'),('Mark',2000000.0,'2019-11-13'),('Clarlie',3000000,'2020-05-21');
+Query OK, 3 rows affected (0.03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+***********************************************************************
