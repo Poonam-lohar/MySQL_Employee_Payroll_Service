@@ -285,3 +285,47 @@ mysql> select * from employee_payroll;
 4 rows in set (0.00 sec)
 
 *********************************************************************************************************************
+
+//UC11:
+
+mysql> create table employee(
+    -> company_ID int not null,
+    -> company_name varchar(30) not null,
+    -> primary key(company_ID));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc company;
+ERROR 1146 (42S02): Table 'employee_payroll_service.company' doesn't exist
+mysql> desc employee;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| company_ID   | int         | NO   | PRI | NULL    |       |
+| company_name | varchar(30) | NO   |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> create table employeeInfo(
+    -> id int unsigned not null auto_increment,
+    -> name varchar(30) not null,
+    -> salary double not null,
+    -> company_ID int not null,
+    -> foreign key(company_ID) references employee(company_ID),
+    -> primary key(id));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from employeeInfo;
+Empty set (0.00 sec)
+
+mysql> desc employeeInfo;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(30)  | NO   |     | NULL    |                |
+| salary     | double       | NO   |     | NULL    |                |
+| company_ID | int          | NO   | MUL | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+******************************************************************************************************************************
